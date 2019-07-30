@@ -1,9 +1,14 @@
-/* global dataSet */
-/* eslint-env es6 */
-/* eslint-disable */
-dataSetVersion = "2018-06-19" // Change this when creating a new data set version. YYYY-MM-DD format.
+/* property
+    characterData, checked, img, key, name, nonanimu, options, opts, rarity,
+    series, status, sub, tooltip, trap, when
+*/
+/* global
+    dataSet,
+    dataSetVersion
+*/
+/* eslint-disable no-global-assign */
+dataSetVersion = "2019-01-18" // Change this when creating a new data set version. YYYY-MM-DD format.
 dataSet[dataSetVersion] = {}
-
 dataSet[dataSetVersion].options = [
   {
     name: "Filter by Series",
@@ -11,7 +16,7 @@ dataSet[dataSetVersion].options = [
     tooltip: "Check this to restrict to certain series.",
     checked: true,
     sub: [
-      { name: "Original", tooltip: "feat. salt", key: "kirara", checked: false },
+      { name: "Original", tooltip: "feat. salt", key: "kirara" },
       { name: "Hidamari Sketch", tooltip: "aka nutbladder grills", key: "wide" },
       { name: "Gakkou Gurashi", tooltip: "spoiler: there is (no) hope", key: "gg" },
       { name: "A Channel", tooltip: "suki tooru~~", key: "achan" },
@@ -29,12 +34,14 @@ dataSet[dataSetVersion].options = [
       { name: "Ha na ya ma ta", tooltip: "paato paato the dramafes", key: "hana" },
       { name: "Comic Girls", tooltip: "abababa", key: "comiga" },
       { name: "Anne Happy", tooltip: "the kirara that describes you", key: "anhapi" },
-      { name: "Haruka na Recieve", tooltip: "haikyu, but fappable and always beach episode", key: "haruka", checked: false },
+      { name: "Haruka na Recieve", tooltip: "haikyu, but fappable and always beach episode", key: "haruka" },
       { name: "K-ON!", tooltip: "KyoAni cashcow about cute girls not trying to do band things", key: "htt" },
       { name: "Koufuku Grafitti", tooltip: "Souma's grandma", key: "foodgasm" },
       { name: "Acchi Kocchi", tooltip: "This animu gave me diabetes", key: "acchi" },
       { name: "Gochuumon Usagi desu ka?", tooltip: "civil war: cawfee VS gween tea", key: "rabbits" },
-      { name: "Wakaba＊Girl", tooltip: "ping pong grils", key: "wakaba" }
+      { name: "Wakaba＊Girl", tooltip: "ping pong grils", key: "wakaba" },
+      { name: "Anima Yell", tooltip: "not love live sunshine, mc is also not bakachika", key: "anima" },
+      { name: "Sansha Sanyou", tooltip: "everyone's dying grandma feat. ex-ojou-chan", key: "3leaves" }
     ]
   },
   {
@@ -96,7 +103,7 @@ dataSet[dataSetVersion].options = [
     checked: true,
     tooltip: "Check this to remove Omi, you heartless bastard."
   }
-];
+]
 
 dataSet[dataSetVersion].characterData = [
   // Hidamari Sketch
@@ -106,12 +113,13 @@ dataSet[dataSetVersion].characterData = [
     opts: {
       series: [ "wide" ],
       when: ["in"],
-      status: ["main"]
+      status: ["main"],
+      rarity: ["ssr", "christmas2018"]
     }
   },
   {
     name: "Miyako",
-    img: "https://i.imgur.com/cNbZ8Gg.jpg",
+    img: "https://i.imgur.com/ftrtMk5.jpg",
     opts: {
       series: [ "wide" ],
       when: ["in"],
@@ -173,9 +181,9 @@ dataSet[dataSetVersion].characterData = [
       nonanimu: true
     }
   },
-
-
+  //
   // Yuyushiki
+  //
   {
     name: "Yuzuko Nonohara",
     img: "https://i.imgur.com/L0NW5TO.jpg",
@@ -232,23 +240,24 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Kei Okano",
-    img: "https://i.imgur.com/TRuWpVp.jpg",
+    img: "https://i.imgur.com/Vgd0EYl.jpg",
     opts: {
       series: ["yys"],
-      when: ["recur"],
+      when: ["in"],
       status: ["recur"]
     }
   },
-
-
+  //
   // Gakkou Gurashi
+  //
   {
     name: "Yuki Takeya",
     img: "https://i.imgur.com/92TcgbJ.jpg",
     opts: {
       series: ["gg"],
       when: ["in"],
-      status: ["main"]
+      status: ["main"],
+      rarity: ["swimsuit", "ssr"]
     }
   },
   {
@@ -257,7 +266,8 @@ dataSet[dataSetVersion].characterData = [
     opts: {
       series: ["gg"],
       when: ["in"],
-      status: ["main"]
+      status: ["main"],
+      rarity: ["ssr"]
     }
   },
   {
@@ -266,25 +276,28 @@ dataSet[dataSetVersion].characterData = [
     opts: {
       series: ["gg"],
       when: ["in"],
-      status: ["main"]
+      status: ["main"],
+      rarity: ["sr"]
     }
   },
   {
     name: "Megumi Sakura",
-    img: "https://i.imgur.com/iPOUVOX.jpg",
+    img: "https://i.imgur.com/8FC9RfX.jpg",
     opts: {
       series: ["gg"],
       when: ["in"],
-      status: ["main", "recur"]
+      status: ["main", "recur"],
+      rarity: ["ssr"]
     }
   },
   {
     name: "Yuri Wakasa",
-    img: "https://i.imgur.com/d7Snyy2.jpg",
+    img: "https://i.imgur.com/2GqbLBG.jpg",
     opts: {
       series: ["gg"],
       when: ["in"],
-      status: ["main"]
+      status: ["main"],
+      rarity: ["ssr"]
     }
   },
   {
@@ -346,9 +359,9 @@ dataSet[dataSetVersion].characterData = [
       status: ["side"]
     }
   },
-
-
+  //
   // New Game
+  //
   {
     name: "Aoba Suzukaze",
     img: "https://i.imgur.com/p8rY4Ig.jpg",
@@ -363,8 +376,9 @@ dataSet[dataSetVersion].characterData = [
     img: "https://i.imgur.com/5dOhBCb.jpg",
     opts: {
       series: ["ng"],
-      when:["in"],
-      status: ["main"]
+      when: ["in"],
+      status: ["main"],
+      rarity: ["ssr", "christmas2018"]
     }
   },
   {
@@ -387,7 +401,7 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Kou Yagami",
-    img: "https://i.imgur.com/MfBHah2.jpg",
+    img: "https://i.imgur.com/VKkU0ip.jpg",
     opts: {
       series: ["ng"],
       when: ["in"],
@@ -460,23 +474,24 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Hotaru Hoshikawa",
-    img: "https://i.imgur.com/IWtrx5d.png?1",
+    img: "https://i.imgur.com/YjSCHNv.jpg",
     opts: {
       series: ["ng"],
-      when: ["never"],
+      when: ["in"],
       status: ["recur"]
     }
   },
-
-
+  //
   // A Channel
+  //
   {
     name: "Tooru",
     img: "https://i.imgur.com/lWooYNy.jpg",
     opts: {
       series: ["achan"],
       when: ["in"],
-      status: ["main"]
+      status: ["main"],
+      rarity: ["ssr", "christmas2018"]
     }
   },
   {
@@ -490,7 +505,7 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Yuuko",
-    img: "https://i.imgur.com/sek4Gtu.jpg",
+    img: "https://i.imgur.com/BuPNZVn.jpg",
     opts: {
       series: ["achan"],
       when: ["in"],
@@ -499,7 +514,7 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Nagi",
-    img: "https://i.imgur.com/L139c9B.jpg",
+    img: "https://i.imgur.com/9qvxdJV.jpg",
     opts: {
       series: ["achan"],
       when: ["in"],
@@ -524,9 +539,9 @@ dataSet[dataSetVersion].characterData = [
       status: ["main"]
     }
   },
-
-
+  //
   // Kiniro Mosaic
+  //
   {
     name: "Karen Kujou",
     img: "https://i.imgur.com/5URXuui.jpg",
@@ -608,16 +623,17 @@ dataSet[dataSetVersion].characterData = [
       status: ["main"]
     }
   },
-
-
+  //
   // Stella no Mahou
+  //
   {
     name: "Tamaki Honda",
     img: "https://i.imgur.com/bUCJJLY.jpg",
     opts: {
       series: ["snm"],
       when: ["in"],
-      status: ["main"]
+      status: ["main"],
+      rarity: ["sr", "ssr"]
     }
   },
   {
@@ -626,7 +642,8 @@ dataSet[dataSetVersion].characterData = [
     opts: {
       series: ["snm"],
       when: ["in"],
-      status: ["main"]
+      status: ["main"],
+      rarity: ["sr", "ssr"]
     }
   },
   {
@@ -635,7 +652,8 @@ dataSet[dataSetVersion].characterData = [
     opts: {
       series: ["snm"],
       when: ["in"],
-      status: ["main"]
+      status: ["main"],
+      rarity: ["sr", "valentines"]
     }
   },
   {
@@ -644,7 +662,8 @@ dataSet[dataSetVersion].characterData = [
     opts: {
       series: ["snm"],
       when: ["in"],
-      status: ["main"]
+      status: ["main"],
+      rarity: ["sr"]
     }
   },
   {
@@ -653,7 +672,8 @@ dataSet[dataSetVersion].characterData = [
     opts: {
       series: ["snm"],
       when: ["in"],
-      status: ["main"]
+      status: ["main"],
+      rarity: ["sr"]
     }
   },
   {
@@ -662,12 +682,23 @@ dataSet[dataSetVersion].characterData = [
     opts: {
       series: ["snm"],
       when: ["in"],
-      status: ["recur"]
+      status: ["recur"],
+      rarity: ["sr"]
     }
   },
-
-
+  {
+    name: "Minaha Iino",
+    img: "https://i.imgur.com/WGNXM9V.jpg",
+    opts: {
+      series: ["snm"],
+      when: ["in"],
+      status: ["main", "recur"],
+      rarity: ["sr"]
+    }
+  },
+  //
   // Kill Me Baby
+  //
   {
     name: "Yasuna Oribe",
     img: "https://i.imgur.com/ZkAWMB4.jpg",
@@ -704,9 +735,9 @@ dataSet[dataSetVersion].characterData = [
       status: ["side"]
     }
   },
-
-
+  //
   // Sakura Trick
+  //
   {
     name: "Haruka Takayama",
     img: "https://i.imgur.com/KTDZz6R.jpg",
@@ -727,7 +758,7 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Shizuku Minami",
-    img: "https://i.imgur.com/2Ur7sYh.jpg",
+    img: "https://i.imgur.com/C8Q4Ok2.jpg",
     opts: {
       series: ["gay"],
       when: ["in"],
@@ -781,16 +812,17 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Sumi Otokawa",
-    img:"https://i.imgur.com/idbHJpK.png?1",
+    img: "https://i.imgur.com/tuf8d9z.jpg",
     opts: {
       series: ["gay"],
-      when: ["never"],
-      status: ["side"]
+      when: ["in"],
+      status: ["side"],
+      rarity: ["sr"]
     }
   },
-
-
+  //
   // Blend S
+  //
   {
     name: "Maika Sakuranomiya",
     img: "https://i.imgur.com/e3d4iSl.jpg",
@@ -802,7 +834,7 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Kaho Hinata",
-    img: "https://i.imgur.com/6rmFs88.jpg",
+    img: "https://i.imgur.com/qhvHz8a.png",
     opts: {
       series: ["blends"],
       when: ["in"],
@@ -811,11 +843,12 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Mafuyu Hoshikawa",
-    img: "https://i.imgur.com/xGMbWIR.jpg",
+    img: "https://i.imgur.com/sUcCxgA.jpg",
     opts: {
       series: ["blends"],
       when: ["in"],
-      status: ["main"]
+      status: ["main"],
+      rarity: ["ssr"]
     }
   },
   {
@@ -824,21 +857,34 @@ dataSet[dataSetVersion].characterData = [
     opts: {
       series: ["blends"],
       when: ["in"],
-      status: ["main"]
+      status: ["main"],
+      rarity: ["sr"]
     }
   },
   {
     name: "Hideri Kanzaki",
-    img: "https://i.imgur.com/rzjhB1z.png",
+    img: "https://i.imgur.com/E1NPdK7.jpg",
     opts: {
       series: ["blends"],
-      when: ["never"],
+      when: ["in"],
       status: ["main"],
+      rarity: ["sr"],
       trap: true
     }
   },
-
-// Urara Meirochou
+  {
+    name: "Aika Sakuranomiya",
+    img: "https://i.imgur.com/oy7IAi3.jpg",
+    opts: {
+      series: ["blends"],
+      when: ["in"],
+      status: ["recur"],
+      rarity: ["sr"]
+    }
+  },
+  //
+  // Urara Meirochou
+  //
   {
     name: "Chiya",
     img: "https://i.imgur.com/eBN4GyI.jpg",
@@ -894,299 +940,331 @@ dataSet[dataSetVersion].characterData = [
     }
   },
   {
-  name: "Omi Nijou",
-  img: "https://i.imgur.com/xIyeAVA.jpg",
-  opts: {
+    name: "Omi Nijou",
+    img: "https://i.imgur.com/xIyeAVA.jpg",
+    opts: {
       series: ["urara"],
       when: ["in"],
       status: ["main"],
       nonanimu: true
     }
   },
-
+  //
   // Yumekui Merry
-    {
-      name: "Merry Nightmare",
-      img: "https://i.imgur.com/bajvH05.jpg",
-      opts: {
-        series: ["merry"],
-        when: ["in"],
-        status: ["main"]
-      }
-    },
-    {
-      name: "Isana Tachibana",
-      img: "https://i.imgur.com/mEUz3wq.jpg",
-      opts: {
-        series: ["merry"],
-        when: ["in"],
-        status: ["main"]
-      }
-    },
-
-    // Slow Start
-    {
-      name: "Hana Ichinose",
-      img: "https://i.imgur.com/WpzwFZ5.jpg",
-      opts: {
-        series: ["ss"],
-        when: ["in"],
-        status: ["main"]
-      }
-    },
-    {
-      name: "Kamuri Sengoku",
-      img: "https://i.imgur.com/D1Ilw8B.jpg",
-      opts: {
-        series: ["ss"],
-        when: ["in"],
-        status: ["main"]
-      }
-    },
-    {
-      name: "Eiko Tokura",
-      img: "https://i.imgur.com/a79XKDs.jpg",
-      opts: {
-        series: ["ss"],
-        when: ["in"],
-        status: ["main"]
-      }
-    },
-    {
-      name: "Tamate Momochi",
-      img: "https://i.imgur.com/64wrUz4.jpg",
-      opts: {
-        series: ["ss"],
-        when: ["in"],
-        status: ["main"]
-      }
-    },
-    {
-      name: "Kiyose Enami",
-      img: "https://i.imgur.com/1UpHb7J.png",
-      opts: {
-        series: ["ss"],
-        when: ["never"],
-        status: ["recur"]
-      }
-    },
-    {
-      name: "Shion Kyozuka",
-      img: "https://i.imgur.com/oIy2RuN.png",
-      opts: {
-        series: ["ss"],
-        when: ["never"],
-        status: ["main"]
-      }
-    },
-    {
-      name: "Hiroe Hannen",
-      img: "https://i.imgur.com/ERJQQso.png",
-      opts: {
-        series: ["ss"],
-        when: ["never"],
-        status: ["main"]
-      }
-    },
-
-  // Yurukyan
-    {
-      name: "Rin Shima",
-      img: "https://i.imgur.com/5ErUzMs.jpg",
-      opts: {
-        series: ["yc"],
-        when: ["in"],
-        status: ["main"]
-      }
-    },
-    {
-      name: "Nadeshiko Kagamihara",
-      img: "https://i.imgur.com/8XeqUys.jpg",
-      opts: {
-        series: ["yc"],
-        when: ["in"],
-        status: ["main"]
-      }
-    },
-    {
-      name: "Chiaki Oogaki",
-      img: "https://i.imgur.com/r0bgj9g.jpg",
-      opts: {
-        series: ["yc"],
-        when: ["in"],
-        status: ["main"]
-      }
-    },
-    {
-      name: "Aoi Inuyama",
-      img: "https://i.imgur.com/ZFuNrUl.jpg",
-      opts: {
-        series: ["yc"],
-        when: ["in"],
-        status: ["main"]
-      }
-    },
-    {
-      name: "Ena Saitou",
-      img: "https://i.imgur.com/tZHtCFZ.jpg?1",
-      opts: {
-        series: ["yc"],
-        when: ["never"],
-        status: ["main"]
-      }
-    },
-    {
-      name: "Minami Toba",
-      img: "https://i.imgur.com/mi7Tzxx.png?1",
-      opts: {
-        series: ["yc"],
-        when: ["never"],
-        status: ["recur"]
-      }
-    },
-
-    // Hanayamata
-      {
-        name: "Naru Sekiya",
-        img: "https://i.imgur.com/g4K4aip.jpg",
-        opts: {
-          series: ["hana"],
-          when: ["in"],
-          status: ["main"]
-        }
-      },
-      {
-        name: "Hana N. Fountainstand",
-        img: "https://i.imgur.com/2RBo55C.jpg",
-        opts: {
-          series: ["hana"],
-          when: ["in"],
-          status: ["main"]
-        }
-      },
-      {
-        name: "Yaya Sasame",
-        img: "https://i.imgur.com/IdTayFK.jpg",
-        opts: {
-          series: ["hana"],
-          when: ["in"],
-          status: ["main"]
-        }
-      },
-      {
-        name: "Machi Tokiwa",
-        img: "https://i.imgur.com/6IXwETH.png",
-        opts: {
-          series: ["hana"],
-          when: ["never"],
-          status: ["main"]
-        }
-      },
-      {
-        name: "Tami Nishimikado",
-        img: "https://i.imgur.com/GBac75Y.png",
-        opts: {
-          series: ["hana"],
-          when: ["never"],
-          status: ["main"]
-        }
-      },
-      {
-        name: "Sari Tokiwa",
-        img: "https://i.imgur.com/sloNQvt.png",
-        opts: {
-          series: ["hana"],
-          when: ["never"],
-          status: ["main"]
-        }
-      },
-
-      // Comiga
-        {
-          name: "Kaoruko Moeta",
-          img: "https://i.imgur.com/smulddG.jpg",
-          opts: {
-            series: ["comiga"],
-            when: ["in"],
-            status: ["main"]
-          }
-        },
-        {
-          name: "Koyume Koizuka",
-          img: "https://i.imgur.com/uiZ6UnM.jpg",
-          opts: {
-            series: ["comiga"],
-            when: ["in"],
-            status: ["main"]
-          }
-        },
-        {
-          name: "Ruki Irokawa",
-          img: "https://i.imgur.com/8yFKqS0.jpg",
-          opts: {
-            series: ["comiga"],
-            when: ["in"],
-            status: ["main"]
-          }
-        },
-        {
-          name: "Tsubasa Katsuki",
-          img: "https://i.imgur.com/GUSW0oF.jpg",
-          opts: {
-            series: ["comiga"],
-            when: ["in"],
-            status: ["main"]
-          }
-        },
-
-
-  // Haruka na Recieve
+  //
+  {
+    name: "Merry Nightmare",
+    img: "https://i.imgur.com/bajvH05.jpg",
+    opts: {
+      series: ["merry"],
+      when: ["in"],
+      status: ["main"],
+      rarity: ["ssr", "christmas2018"]
+    }
+  },
+  {
+    name: "Isana Tachibana",
+    img: "https://i.imgur.com/mEUz3wq.jpg",
+    opts: {
+      series: ["merry"],
+      when: ["in"],
+      status: ["main"]
+    }
+  },
+  //
+  // Slow Start
+  //
+  {
+    name: "Hana Ichinose",
+    img: "https://i.imgur.com/WpzwFZ5.jpg",
+    opts: {
+      series: ["ss"],
+      when: ["in"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Kamuri Sengoku",
+    img: "https://i.imgur.com/znhDmEC.jpg",
+    opts: {
+      series: ["ss"],
+      when: ["in"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Eiko Tokura",
+    img: "https://i.imgur.com/a79XKDs.jpg",
+    opts: {
+      series: ["ss"],
+      when: ["in"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Tamate Momochi",
+    img: "https://i.imgur.com/nxNye7Z.jpg",
+    tooltip: "........image change 11/10",
+    opts: {
+      series: ["ss"],
+      when: ["in"],
+      status: ["main"],
+      rarity: ["ssr"]
+    }
+  },
+  {
+    name: "Kiyose Enami",
+    img: "https://i.imgur.com/1UpHb7J.png",
+    opts: {
+      series: ["ss"],
+      when: ["never"],
+      status: ["recur"]
+    }
+  },
+  {
+    name: "Shion Kyozuka",
+    img: "https://i.imgur.com/oIy2RuN.png",
+    opts: {
+      series: ["ss"],
+      when: ["never"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Hiroe Hannen",
+    img: "https://i.imgur.com/ERJQQso.png",
+    opts: {
+      series: ["ss"],
+      when: ["never"],
+      status: ["main"]
+    }
+  },
+  //
+  // Yurukyan (Yuru Camp)
+  //
+  {
+    name: "Rin Shima",
+    img: "https://i.imgur.com/5ErUzMs.jpg",
+    opts: {
+      series: ["yc"],
+      when: ["in"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Nadeshiko Kagamihara",
+    img: "https://i.imgur.com/28EBbDO.png",
+    opts: {
+      series: ["yc"],
+      when: ["in"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Chiaki Oogaki",
+    img: "https://i.imgur.com/r0bgj9g.jpg",
+    opts: {
+      series: ["yc"],
+      when: ["in"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Aoi Inuyama",
+    img: "https://i.imgur.com/ZFuNrUl.jpg",
+    opts: {
+      series: ["yc"],
+      when: ["in"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Ena Saito",
+    img: "https://i.imgur.com/Juyi9AY.jpg",
+    opts: {
+      series: ["yc"],
+      when: ["in"],
+      status: ["main"],
+      rarity: ["sr"]
+    }
+  },
+  {
+    name: "Minami Toba",
+    img: "https://i.imgur.com/mi7Tzxx.png?1",
+    opts: {
+      series: ["yc"],
+      when: ["never"],
+      status: ["recur"]
+    }
+  },
+  //
+  // Hanayamata
+  //
+  {
+    name: "Naru Sekiya",
+    img: "https://i.imgur.com/g4K4aip.jpg",
+    opts: {
+      series: ["hana"],
+      when: ["in"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Hana N. Fountainstand",
+    img: "https://i.imgur.com/2RBo55C.jpg",
+    opts: {
+      series: ["hana"],
+      when: ["in"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Yaya Sasame",
+    img: "https://i.imgur.com/IdTayFK.jpg",
+    opts: {
+      series: ["hana"],
+      when: ["in"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Machi Tokiwa",
+    img: "https://i.imgur.com/6IXwETH.png",
+    opts: {
+      series: ["hana"],
+      when: ["never"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Tami Nishimikado",
+    img: "https://i.imgur.com/GBac75Y.png",
+    opts: {
+      series: ["hana"],
+      when: ["never"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Sari Tokiwa",
+    img: "https://i.imgur.com/sloNQvt.png",
+    opts: {
+      series: ["hana"],
+      when: ["never"],
+      status: ["main"]
+    }
+  },
+  //
+  // Comiga (Comic Girls)
+  //
+  {
+    name: "Kaoruko Moeta",
+    img: "https://i.imgur.com/smulddG.jpg",
+    opts: {
+      series: ["comiga"],
+      when: ["in"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Koyume Koizuka",
+    img: "https://i.imgur.com/uiZ6UnM.jpg",
+    opts: {
+      series: ["comiga"],
+      when: ["in"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Ruki Irokawa",
+    img: "https://i.imgur.com/8yFKqS0.jpg",
+    opts: {
+      series: ["comiga"],
+      when: ["in"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Tsubasa Katsuki",
+    img: "https://i.imgur.com/GUSW0oF.jpg",
+    opts: {
+      series: ["comiga"],
+      when: ["in"],
+      status: ["main"]
+    }
+  },
+  //
+  // Harukana Recieve
+  //
   {
     name: "Haruka Oozora",
-    tooltip:  "or Ozora, but eh...\n" +
-              "Source: Manga Cover",
-    img: "https://i.imgur.com/eNx3eMR.png",
+    img: "https://i.imgur.com/GFnRZPv.jpg",
+    // tooltip:  "or Ozora, but eh...\n" +
+    //          "Source: Manga Cover",
+    // img: "https://i.imgur.com/eNx3eMR.png",
     opts: {
       series: ["haruka"],
-      when: ["soon"],
+      when: ["in"],
       status: ["main"]
     }
   },
   {
     name: "Kanata Higa",
-    tooltip: "Source: Manga Cover",
-    img: "https://i.imgur.com/UfOyS1O.png",
+    img: "https://i.imgur.com/he96Tag.jpg",
+    // old img: "https://i.imgur.com/UfOyS1O.png",
+    // tooltip: "Source: Manga Cover",
     opts: {
       series: ["haruka"],
-      when: ["soon"],
+      when: ["in"],
       status: ["main"]
     }
   },
-
-  /// OTHER GAME SERIES GO HERE
-
-  /// END
-
-  /// START OF NON-GAME SERIES
-  // Gochuumon Usagi desu ka?
+  {
+    name: "Emily Thomas",
+    img: "https://i.imgur.com/HBrDEYF.jpg",
+    opts: {
+      series: ["haruka"],
+      when: ["in"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Claire Thomas",
+    img: "https://i.imgur.com/fkV7tOL.jpg",
+    opts: {
+      series: ["haruka"],
+      when: ["in"],
+      status: ["main"]
+    }
+  },
+  //
+  // Gochuumon Usagi desu ka? (Is Your Order a Rabbit?)
+  // Also named: GochiUsa, GU, Rabbits
+  //
   {
     name: "Cocoa Hoto",
-    img: "https://i.imgur.com/6FmRYa4.png",
-    tooltip: "Source: Twitter / Official / April Fools",
+    img: "https://i.imgur.com/YyAvDhc.jpg",
+    // Old
+    // img: "https://i.imgur.com/6FmRYa4.png",
+    // tooltip: "Source: Twitter / Official / April Fools",
     opts: {
       series: ["rabbits"],
-      when: ["never"],
-      status: ["main"]
+      when: ["in"],
+      status: ["main"],
+      rarity: ["ssr"]
     }
   },
   {
     name: "Chino Kafuu",
-    img: "https://i.imgur.com/h4kPNQf.png",
-    tooltip: "Source: Twitter / Official / April Fools",
+    img: "https://i.imgur.com/3I8DXoi.jpg",
+    // Old
+    // img: "https://i.imgur.com/h4kPNQf.png",
+    // tooltip: "Source: Twitter / Official / April Fools",
     opts: {
       series: ["rabbits"],
-      when: ["never"],
-      status: ["main"]
+      when: ["in"],
+      status: ["main"],
+      rarity: ["ssr"]
     }
   },
   {
@@ -1269,34 +1347,37 @@ dataSet[dataSetVersion].characterData = [
       status: ["side"]
     }
   },
-
-
+  //
   // Anne Happy
+  //
   {
     name: "Anne Hanakoizumi",
     img: "https://i.imgur.com/e7zWKrI.jpg",
     opts: {
       series: ["anhapi"],
       when: ["in"],
-      status: ["main"]
+      status: ["main"],
+      rarity: ["ssr"]
     }
   },
   {
     name: "Ruri Hibarigaoka",
-    img: "https://i.imgur.com/jp7MEbd.png",
+    img: "https://i.imgur.com/8uWBUTi.jpg",
     opts: {
       series: ["anhapi"],
-      when: ["never"],
-      status: ["main"]
+      when: ["in"],
+      status: ["main"],
+      rarity: ["ssr"]
     }
   },
   {
     name: "Botan Kumegawa",
-    img: "https://i.imgur.com/D3pYgcK.png",
+    img: "https://i.imgur.com/4vs0sKn.jpg",
     opts: {
       series: ["anhapi"],
-      when: ["never"],
-      status: ["main"]
+      when: ["in"],
+      status: ["main"],
+      rarity: ["sr"]
     }
   },
   {
@@ -1318,13 +1399,13 @@ dataSet[dataSetVersion].characterData = [
     }
   },
   {
-      name: "Kodaira",
-      img: "https://i.imgur.com/JVukdFe.png?1",
-      opts: {
-        series: ["anhapi"],
-        when: ["never"],
-        status: ["anta", "main"]
-      }
+    name: "Kodaira",
+    img: "https://i.imgur.com/JVukdFe.png?1",
+    opts: {
+      series: ["anhapi"],
+      when: ["never"],
+      status: ["anta", "main"]
+    }
   },
   {
     name: "Tsubaki Sayama",
@@ -1336,9 +1417,82 @@ dataSet[dataSetVersion].characterData = [
       status: ["main", "recur"]
     }
   },
-
-
+  //
+  // Anima Yell
+  // Also named: Chair
+  //
+  {
+    name: "Kohane Hatoya",
+    img: "https://i.imgur.com/2YTeSTh.jpg",
+    tooltip: "chunchun",
+    opts: {
+      series: ["anima"],
+      when: ["in"],
+      status: ["main"],
+      rarity: ["ssr"]
+    }
+  },
+  {
+    name: "Hizume Arima",
+    img: "https://i.imgur.com/AQOCbDI.jpg",
+    opts: {
+      series: ["anima"],
+      when: ["in"],
+      status: ["main"],
+      rarity: ["sr"]
+    }
+  },
+  {
+    name: "Uki Sawatari",
+    img: "https://i.imgur.com/2HnezS0.jpg",
+    opts: {
+      series: ["anima"],
+      when: ["in"],
+      status: ["main"],
+      rarity: ["sr"]
+    }
+  },
+  {
+    name: "Kotetsu Tatejima",
+    img: "https://i.imgur.com/tkL5LA3.jpg",
+    opts: {
+      series: ["anima"],
+      when: ["in"],
+      status: ["main"],
+      rarity: ["sr"]
+    }
+  },
+  {
+    name: "Kana Ushiku",
+    img: "https://i.imgur.com/eUCPVRo.jpg",
+    opts: {
+      series: ["anima"],
+      when: ["in"],
+      status: ["main"],
+      rarity: ["sr"]
+    }
+  },
+  //
+  // Kirara Fantasia! :LampYay:
+  //
+  {
+    name: "Lamp",
+    img: "https://i.imgur.com/0BJ26Ql.jpg",
+    opts: {
+      series: ["kirara"],
+      when: ["in"],
+      status: ["main"],
+      rarity: ["ssr"]
+    }
+  },
+  /// OTHER GAME SERIES GO HERE
+  //
+  /// END OF GAME SERIES
+  //
+  /// START OF NON-GAME SERIES
+  //
   // Wakaba Girl
+  //
   {
     name: "Wakaba Kohashi",
     img: "https://i.imgur.com/dYUP68u.jpg",
@@ -1379,65 +1533,61 @@ dataSet[dataSetVersion].characterData = [
       status: ["main"]
     }
   },
-
-  
+  //
   // K-ON!
+  //
   {
     name: "Yui Hirasawa",
-    img: "https://i.imgur.com/6CdngWz.png",
-    tooltip: "Source: Magazine Scan",
+    img: "https://i.imgur.com/T9XI82C.jpg",
     opts: {
       series: ["htt"],
-      when: ["soon"],
-      status: ["main"]
+      when: ["in"],
+      status: ["main"],
+      rarity: ["ssr"]
     }
   },
   {
     name: "Ritsu Tainaka",
-    img: "https://i.imgur.com/GknLnZj.png",
-    tooltip: "Source: Magazine Scan",
+    img: "https://i.imgur.com/rqzGnvT.jpg",
     opts: {
       series: ["htt"],
-      when: ["soon"],
+      when: ["in"],
       status: ["main"]
     }
   },
   {
     name: "Mio Akiyama",
-    img: "https://i.imgur.com/8LFA2s8.png",
-    tooltip: "Source: Magazine Scan",
+    img: "https://i.imgur.com/HvY2A9x.jpg",
     opts: {
       series: ["htt"],
-      when: ["soon"],
+      when: ["in"],
       status: ["main"]
     }
   },
   {
     name: "Tsumugi Kotobuki",
-    img: "https://i.imgur.com/mitkEbC.png",
-    tooltip: "Source: Magazine Scan",
+    img: "https://i.imgur.com/lpIbi33.jpg",
     opts: {
       series: ["htt"],
-      when: ["soon"],
+      when: ["in"],
       status: ["main"]
     }
   },
   {
     name: "Azusa Nakano",
-    img: "https://i.imgur.com/iLQIVUM.png",
-    tooltip: "Source: Magazine Scan",
+    img: "https://i.imgur.com/gDMySi6.jpg",
     opts: {
       series: ["htt"],
-      when: ["soon"],
+      when: ["in"],
       status: ["main"]
     }
   },
   {
     name: "Ui Hirasawa",
-    img: "https://i.imgur.com/eVetL22.png",
+    img: "https://i.imgur.com/XiKaKbw.jpg",
     opts: {
       series: ["htt"],
-      when: ["never"],
+      when: ["in"],
       status: ["recur", "main"]
     }
   },
@@ -1498,10 +1648,11 @@ dataSet[dataSetVersion].characterData = [
       nonanimu: true
     }
   },
-  // Currently Missing: College Arc mains
+  // TODO: Currently Missing: College Arc mains
 
-
+  //
   // Koufuku Graffiti
+  //
   {
     name: "Ryou Machiko",
     img: "https://i.imgur.com/aqIBUGu.png",
@@ -1538,9 +1689,9 @@ dataSet[dataSetVersion].characterData = [
       status: ["recur"]
     }
   },
-
-
+  //
   // Acchi Kocchi
+  //
   {
     name: "Tsumiki Miniwa",
     img: "https://i.imgur.com/Tj3snKf.png",
@@ -1567,6 +1718,92 @@ dataSet[dataSetVersion].characterData = [
       when: ["never"],
       status: ["main"]
     }
+  },
+  //
+  // Sansha Sanyou
+  //
+  {
+    name: "Youko Nishikawa",
+    img: "https://i.imgur.com/gbbqgDV.png", // This is a placeholder image
+    opts: {
+      series: ["3leaves"],
+      when: ["never"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Futaba Odagiri",
+    img: "https://i.imgur.com/FkAlciw.png",
+    opts: {
+      series: ["3leaves"],
+      when: ["never"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Teru Hayama",
+    img: "https://i.imgur.com/vOz9eho.png",
+    opts: {
+      series: ["3leaves"],
+      when: ["never"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Shino Sonobe",
+    img: "https://i.imgur.com/v3o3C8q.png",
+    opts: {
+      series: ["3leaves"],
+      when: ["never"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Kou Hayama",
+    img: "https://i.imgur.com/Jbizr3s.png",
+    opts: {
+      series: ["3leaves"],
+      when: ["never"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Serina Nishiyama",
+    img: "https://i.imgur.com/sEFBd1U.png",
+    opts: {
+      series: ["3leaves"],
+      when: ["never"],
+      status: ["main"]
+    }
+  },
+  {
+    name: "Sasame Tsuji",
+    img: "https://i.imgur.com/FAZ7Io5.png",
+    opts: {
+      series: ["3leaves"],
+      when: ["never"],
+      status: ["recur", "anta"]
+    }
+  },
+  {
+    name: "Sakura Usuda",
+    img: "https://i.imgur.com/FDRkBzp.png",
+    opts: {
+      series: ["3leaves"],
+      when: ["never"],
+      status: ["recur"]
+    }
+  },
+  {
+    name: "Asako Kondou",
+    img: "https://i.imgur.com/OncwN4F.png",
+    opts: {
+      series: ["3leaves"],
+      when: ["never"],
+      status: ["side"]
+    }
   }
+  //
   // END
-];
+  //
+]

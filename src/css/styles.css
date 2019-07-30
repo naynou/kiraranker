@@ -39,7 +39,7 @@ body {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  margin-top: 1em;
+  /*margin-top: 1em; */
   background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 182, 193, 255), rgba(255, 255, 255, 0));
 }
 
@@ -75,40 +75,41 @@ body {
 }
 
 .sorter {
-  margin: 0px auto;
+  /*margin: 0px auto; */
   display: grid;
-  grid-template-columns: 5fr 4fr 5fr;
+  grid-template-columns: repeat(8, 12vw);
+  grid-template-rows: repeat(4, 12vw) 0.5vw 1.3em;
   /*
   grid-template-columns: 120px 1fr 120px;
   */
-  grid-gap: 1px;/*5px;*/
-  width: 95%;/* old is 420px; */
+  /** grid-gap: 1px; *//*5px;*/
+  /*width: 95%;*//* old is 420px; */
 }
 
 .button {
   border: 1px solid black;
   text-align: center;
   padding: 10%;
-  grid-column: 2 / 3;
+  grid-column: 4 / 6;
   cursor: pointer;
 }
 
 .starting.start.button {
-  grid-row: span 6;
+  grid-row: span 4 / auto;
 }
 
 .starting.load.button {
-  grid-row: span 3;
+  grid-row: span 2 / auto;
   display: none;
 }
 
 .sorting.button, .finished.button {
-  grid-row: span 2;
+  grid-row: span 1;
   display: none;
 }
 
 .loading.button {
-  grid-row: span 6;
+  grid-row: span 4;
   display: none;
 }
 
@@ -151,9 +152,9 @@ body {
 
 .sorter > .padded-image {
   width: 100%;
-  max-width: 350px;
+  /* max-width: 350px; */
   overflow: hidden;
-  grid-row: 1 / 7;
+  grid-row: 1 / 5;
 
   display: flex;
   align-items: center;
@@ -169,9 +170,8 @@ body {
 
 .sorter > .padded-image > .image {
   width: 100%;
-  max-width: 350px;
+  max-width: inherit; /*Previously max-width: 350px;*/
   margin: auto;
-  grid-row: 1 / 7;
   object-fit: contain; /* Do not scale the image was contain */
   object-position: center; /* Center the image within the element */
   cursor: pointer;
@@ -180,7 +180,7 @@ body {
 
 .sorter > .text {
   width: 100%;
-  max-width: 350px;
+  /* max-width: 350px; */
   margin-left: auto;
   margin-right: auto;
   /*max-width: 240px;*/
@@ -189,24 +189,28 @@ body {
   height: 60px;
   */
   display: none;
+  grid-row: 6;
 }
 
 .sorter > .text > p {
-  margin: 0.5em 5px 0px;
   width: 100%;
   text-align: center;
-  font-size: 1em;
-  line-height: 1.5em;
+  font-size: 0.925em;
+  transform: translateY(12.5%);
 }
 
 .sorter > .left {
-  grid-column: 1 / 2;
+  grid-column: 1 / 4;
   border: 1px solid #000000;
 }
 
 .sorter > .right {
-  grid-column: 3 / 4;
+  grid-column: 6 / 9;
   border: 1px solid #000000;
+}
+
+.sorter > .save {
+  grid-row: span 2;
 }
 
 .options {
@@ -215,12 +219,12 @@ body {
   text-align: left;
   grid-template-columns: repeat(3, 4fr);
   grid-gap: 3vmin;
-  width: 100%;
+  width: 95%;
   max-width: 80vh; /*old 450px*/
 }
 
 .options > div {
-  font-size: 1.325vh; /*Chrome somehow ignores 0.5625em; */
+  font-size:  0.5em; /*Chrome somehow ignores 0.5625em; */
   letter-spacing: -0.025vmin;
   text-shadow: 0.075em 0.075em #b3d1ff;
 }
@@ -264,6 +268,18 @@ label:hover {
   justify-content: space-around;
 }
 
+@media all and (min-width: 1028px) {
+  .sorter {
+    margin-top: 1em;
+    grid-template-columns: repeat(8, 9vw);
+    grid-template-rows: repeat(4, 9vw) 0.5vw 1.3em;
+  }
+
+  .options > div {
+    font-size:  0.625em;
+  }
+}
+
 @media all and (min-width: 600px) {
   .results {
     flex-flow: row wrap;
@@ -277,6 +293,10 @@ label:hover {
   .results {
     flex-flow: row wrap;
     flex: 1 1 33%;
+  }
+  
+  .button {
+    font-size: 0.925em;
   }
 }
 

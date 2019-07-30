@@ -1,3 +1,4 @@
+/* eslint-disable semi */
 /** @type {CharData} */
 let characterData       = [];   // Initial character data set used.
 /** @type {CharData} */
@@ -61,6 +62,16 @@ let tipCloseButton  = null;
 
 let agonyTooltip    = "If this is enabled, you are a true masochist."; 
 
+/** @type {SorterDatabase} 
+ * This database stores all Local cache information. The purpose of this database is to improve lookup times by storing
+ * the relevant data into the database which is stored locally by the browser at its discretion.
+ * 
+ * If ever there is a newer version, the old hash should be deleted within local db for a new version, and that
+ * file should be fetched.
+*/
+let db              = new Dexie("sorter-db");
+
+/* eslint-enable semi */
 
 function isLocalStorageSupported() {
   try {
@@ -93,6 +104,7 @@ function init() {
   document.querySelector('.finished.list.button').addEventListener('click', generateTextList);
 
   document.querySelector('.clearsave').addEventListener('click', clearProgress);
+  //document.querySelector('.clearcache').addEventListener('click', clearCacheDB);
 
   /** Define Tips */
   tipContent     = document.querySelector('.tip-content');
@@ -131,14 +143,20 @@ function init() {
     }
   });
 
+  /** Define Local DB */
+  db.version(1).stores({
+    cache: '++id, name, hash'
+  });
+
   document.querySelector('.image.selector').insertAdjacentElement('beforeend', document.createElement('select'));
 
   /** Initialize image quantity selector for results. */
-  for (let i = 0; i <= 10; i++) {
+  let noArray = [1, 3, 5, 6, 9, 10, 12, 15, 20];
+  for (let i = 0; i < noArray.length; i++) {
     const select = document.createElement('option');
-    select.value = i;
-    select.text = i;
-    if (i === 3) { select.selected = 'selected'; }
+    select.value = noArray[i];
+    select.text = noArray[i];
+    if (noArray[i] === 3) { select.selected = 'selected'; }
     document.querySelector('.image.selector > select').insertAdjacentElement('beforeend', select);
   }
 
@@ -151,7 +169,7 @@ function init() {
   if (storedSaveType) {
     document.querySelector('.starting.load.button > span').insertAdjacentText('beforeend', storedSaveType);
     document.querySelectorAll('.starting.button').forEach(el => {
-      el.style['grid-row'] = 'span 3';
+      el.style['grid-row'] = 'span 2';
       el.style.display = 'block';
     });
   }
@@ -662,8 +680,19 @@ function clearProgress() {
   localStorage.removeItem(`${sorterURL}_saveData`);
   localStorage.removeItem(`${sorterURL}_saveType`);
 
-  document.querySelectorAll('.starting.start.button').forEach(el => el.style['grid-row'] = 'span 6');
+  document.querySelectorAll('.starting.start.button').forEach(el => el.style['grid-row'] = 'span 4');
   document.querySelectorAll('.starting.load.button').forEach(el => el.style.display = 'none');
+}
+
+/**
+ * Clear the cached image data from local browser Indexed DB.
+ */
+function clearCacheDB() {
+  db.transaction('rw', db.cache, () => {
+    db.cache.delete();
+    console.log('Deleted all the cached data.');
+    alert('All cached data has been deleted!');
+  });
 }
 
 function generateImage() {
@@ -731,7 +760,14 @@ function populateOptions() {
     return `<div><label title="${tooltip?tooltip:name}"><input id="cb-${id}" type="checkbox" ${checked?'checked':''} ${disabled?'disabled':''}> ${name} (${characterData.filter(x => (subkey?x.opts[key]?x.opts[key]:[]:[]).includes(subkey) || (subkey == null && x.opts.hasOwnProperty(key))).length})</label></div>`;
   };
   const optInsertLarge = (name, id, tooltip, checked = true) => {
-    return `<div class="large option"><label title="${tooltip?tooltip:name}"><input id="cbgroup-${id}" type="checkbox" ${checked?'checked':''}> ${name}</label></div>`;
+    return `<div class="large option">
+              <label title="${tooltip?tooltip:name}">
+                <input id="cbgroup-${id}" type="checkbox" ${checked?'checked':''}> ${name}
+              </label>
+              <label title="${tooltip?tooltip:name}">
+                <input id="cbgroup-${id}-toggleoff" type="checkbox" ${checked?'checked':''} style="visibility: hidden;"> Quick Toggle
+              </label>
+            </div>`;
   };
 
   /** Clear out any previous options. */
@@ -753,6 +789,19 @@ function populateOptions() {
           document.getElementById(`cb-${opt.key}-${subindex}`).disabled = !groupbox.checked;
           if (groupbox.checked) { document.getElementById(`cb-${opt.key}-${subindex}`).checked = true; }
         });
+      });
+
+      // Insert Toggle Off Behavior
+      const groupboxtoggle = document.getElementById(`cbgroup-${opt.key}-toggleoff`);
+
+      groupboxtoggle.parentElement.addEventListener('click', () => {
+        if (groupbox.checked) {
+          opt.sub.forEach((subopt, subindex) => {
+            document.getElementById(`cb-${opt.key}-${subindex}`).checked = groupboxtoggle.checked; 
+          });
+        } else {
+          groupboxtoggle.checked = !groupboxtoggle.checked;
+        }
       });
     } else {
       optList.insertAdjacentHTML('beforeend', optInsert(opt.name, opt.key, opt.key, opt.tooltip, opt.checked));
@@ -867,8 +916,12 @@ function preloadImages() {
     }, timeoutMS)
   });
 
+  /**
+   * @param {String} src 
+   * @param {number} idx 
+   */
   const loadImage = (src, idx) => {
-      let actualPromise = new Promise((resolve, reject) => {
+      let actualPromise = () => new Promise((resolve, reject) => {
           const img = new Image();
 
           img.crossOrigin = 'Anonymous';
@@ -882,20 +935,51 @@ function preloadImages() {
           }
           img.src = src;
       });
-      return Promise.race([actualPromise, timeoutPromise]);
+
+      const loadImageFromDB = (/** @type {CacheEntry} */cacheEntry) => {
+        return new Promise((resolve, reject) => {
+          if (cacheEntry === undefined) return reject();
+          const img = new Image();
+          img.crossOrigin = 'Anonymous';
+          img.src = cacheEntry.source;
+          characterDataToSort[idx].img = cacheEntry.source;
+          console.log(`Preloaded from Local DB:`, characterDataToSort[idx].name);
+          progressBar(`Loading Image ${++imagesLoaded}`, Math.floor(imagesLoaded * 100 / totalLength));
+          resolve(img);
+        });
+      };
+      
+      return db.cache.where({
+        name: characterDataToSort[idx].name,
+        hash: hash(src)
+      }).first()
+        .then(loadImageFromDB)
+        .catch( (error) => {
+          if(error !== undefined) console.log(error);
+          return Promise.race([actualPromise(), timeoutPromise]);
+        });
   };
 
-  const setImageToData = (img, idx) => {
+  const setImageToData = (/** @type {HTMLImageElement} */img, idx) => {
     const canvas = document.createElement('canvas');
     canvas.width = img.naturalWidth;
     canvas.height = img.naturalHeight;
     canvas.getContext('2d').drawImage(img, 0, 0);
-    characterDataToSort[idx].img = canvas.toDataURL();
+    let imgData = canvas.toDataURL();
+    db.cache.put({
+      name: characterDataToSort[idx].name,
+      hash: hash(img.src),
+      source: imgData
+    });
+    characterDataToSort[idx].img = imgData;
     progressBar(`Loading Image ${++imagesLoaded}`, Math.floor(imagesLoaded * 100 / totalLength));
   };
 
-  const promises = characterDataToSort.map((char, idx) => loadImage(imageRoot + char.img, idx));
-  return Promise.all(promises);
+  const promises = characterDataToSort.map(( /** @typedef {CharData} */char, idx) => loadImage(imageRoot + char.img, idx));
+  return Promise.all(promises).catch((err) => {
+    console.log(err);
+    throw err;
+  });
 }
 
 /**
@@ -921,7 +1005,8 @@ function msToReadableTime (milliseconds) {
 	if (days) content.push(days + " day" + (days > 1 ? "s" : ""));
 	if (hours) content.push(hours + " hour"  + (hours > 1 ? "s" : ""));
 	if (minutes) content.push(minutes + " minute" + (minutes > 1 ? "s" : ""));
-	if (t) content.push(t + " second" + (t > 1 ? "s" : ""));
+  if (t) content.push(t + " second" + (t > 1 ? "s" : ""));
+  if (!t) content.push(milliseconds + " millisecond" + (milliseconds > 1 ? "s" : ""));
   return content.slice(0,3).join(', ');
 }
 
@@ -945,6 +1030,25 @@ function reduceTextWidth(text, font, width) {
     }
     return reducedText + '..';
   }
+}
+
+/**
+ * 
+ * @param {string} str 
+ * @returns {number}
+ */
+function hash(str) {
+  if (Array.prototype.reduce){
+      return str.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);              
+  } 
+  var hash = 0;
+  if (str.length === 0) return hash;
+  for (var i = 0; i < str.length; i++) {
+      var character  = str.charCodeAt(i);
+      hash  = ((hash<<5)-hash)+character;
+      hash = hash & hash; // Convert to 32bit integer
+  }
+  return hash;
 }
 
 window.onload = init;
