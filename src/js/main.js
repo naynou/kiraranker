@@ -122,7 +122,7 @@ function init() {
         case 'h': case 'ArrowLeft':           pick('left'); break;
         case 'l': case 'ArrowRight':          pick('right'); break;
         case 'k': case '1': case 'ArrowUp':   if (agonyMode) pick('coinflip'); else pick('tie'); break;
-        case 'j': case '2': case 'ArrowDown': if (agonyMode) undo(); else displayTips(); break;
+        case 'j': case '2': case 'ArrowDown': if (agonyMode) displayTips(); else undo(); break;
         default: break;
       }
     }
@@ -229,7 +229,13 @@ function start() {
     }
   });
 
-  /** Filter out deselected nested criteria and remove selected criteria. */
+  /** 
+   * Filter out deselected nested criteria and remove selected criteria. 
+   * For non-selected criteria, "forced_inclusive" flag means you will include them EVEN if the other "removal" non-nested criterias are already true.
+   */
+  let forceInclusiveOptions = options.filter((opt) => opt.forced_inclusive);
+  console.log(`Forced Inclusive Options: ${JSON.stringify(forceInclusiveOptions)}`);
+
   options.forEach((opt, index) => {
     if ('sub' in opt) {
       if (optTaken[index]) {
@@ -243,7 +249,9 @@ function start() {
         });
       }
     } else if (optTaken[index]) {
-      characterDataToSort = characterDataToSort.filter(char => !char.opts[opt.key]);
+      characterDataToSort = characterDataToSort.filter(char => {
+        return forceInclusiveOptions.some(fiopt => char.opts[fiopt.key]) || !char.opts[opt.key];
+      });
     }
   });
 
