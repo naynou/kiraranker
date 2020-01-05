@@ -292,12 +292,12 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Miki Naoki",
-    img: "https://i.imgur.com/djD9QzI.jpg",
+    img: "https://i.imgur.com/s4qktW5.png",
     opts: {
       series: ["gg"],
       when: ["in"],
       status: ["main"],
-      rarity: ["sr"]
+      rarity: ["ssr"]
     }
   },
   {
@@ -1686,12 +1686,12 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Miki Noda",
-    img: "https://i.imgur.com/s4qktW5.png",
+    img: "https://i.imgur.com/W2H6O5a.png",
     opts: {
       series: ["ga"],
       when: ["in"],
       status: ["main"],
-      rarity: ["ssr"]
+      rarity: ["sr"]
     }
   },
   {
