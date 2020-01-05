@@ -44,7 +44,8 @@ dataSet[dataSetVersion].options = [
       { name: "Sansha Sanyou", tooltip: "everyone's dying grandma feat. ex-ojou-chan", key: "3leaves" },
       { name: "GA: Geijutsuka Art Design Class", tooltip: "hidasketch, but with souless eyes that seep into your soul", key: "ga" },
       { name: "Hitsugi Katsugi no Kuro. ~Kaichuu Tabi no Wa~", tooltip: "also known as Kuro. or nothing because you're not a mangafag.", key: "kuro" },
-      { name: "Machikado Mazoku", tooltip: "It's almost like GabDrop, but Satania is the MC.", key: "machi" }
+      { name: "Machikado Mazoku", tooltip: "It's almost like GabDrop, but Satania is the MC.", key: "machi" },
+      { name: "Harumination", tooltip: "If Nagato became funny and liked curry.", key: "harumi" }
     ]
   },
   {
@@ -101,10 +102,17 @@ dataSet[dataSetVersion].options = [
     tooltip: "Check this to remove Hideri (and others?), because (s)he's ranked ??? in your heart."
   },
   {
-    name: "No non-Anime charas",
+    name: "No Non-Anime charas",
     key: "nonanimu",
     checked: true,
-    tooltip: "Check this to remove Omi, you heartless bastard."
+    tooltip: "Check this to remove characters that haven't appeared in anime."
+  },
+  {
+    name: "Manga-Exclusive charas",
+    key: "manga_exclusive",
+    checked: true,
+    forced_inclusive: true,
+    tooltip: "Uncheck this to exclude manga-exclusive characters added into the game."
   }
 ]
 
@@ -127,7 +135,7 @@ dataSet[dataSetVersion].characterData = [
       series: [ "wide" ],
       when: ["in"],
       status: ["main"],
-      rarity: ["ssr"]
+      rarity: ["ssr", "christmas2019"]
     }
   },
   {
@@ -233,11 +241,12 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Chiho Aikawa",
-    img: "https://i.imgur.com/JcVdm7T.jpg",
+    img: "https://i.imgur.com/mn0qDCW.png",
     opts: {
       series: ["yys"],
       when: ["in"],
-      status: ["main"]
+      status: ["main"],
+      rarity: ["ssr"]
     }
   },
   {
@@ -308,7 +317,7 @@ dataSet[dataSetVersion].characterData = [
       series: ["gg"],
       when: ["in"],
       status: ["main"],
-      rarity: ["ssr"]
+      rarity: ["ssr", "newyear2020"]
     }
   },
   {
@@ -443,11 +452,12 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Umiko Ahagon",
-    img: "https://i.imgur.com/xhpJjXm.jpg",
+    img: "https://i.imgur.com/ZTnpLOE.png",
     opts: {
       series: ["ng"],
       when: ["in"],
-      status: ["main"]
+      status: ["main"],
+      rarity: ["ssr"]
     }
   },
   {
@@ -520,7 +530,7 @@ dataSet[dataSetVersion].characterData = [
       series: ["achan"],
       when: ["in"],
       status: ["main"],
-      rarity: ["ssr"]
+      rarity: ["ssr", "newyear2020"]
     }
   },
   {
@@ -555,11 +565,12 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Yutaka",
-    img: "https://i.imgur.com/gu8tZD0.png?1",
+    img: "https://i.imgur.com/aT0XRIj.png",
     opts: {
       series: ["achan"],
-      when: ["never"],
-      status: ["main"]
+      when: ["in"],
+      status: ["main"],
+      rarity: ["sr"]
     }
   },
   {
@@ -742,7 +753,8 @@ dataSet[dataSetVersion].characterData = [
       when: ["in"],
       status: ["main"],
       rarity: ["sr"],
-      nonanimu: true
+      nonanimu: true,
+      manga_exclusive: true
     }
   },
   //
@@ -887,7 +899,8 @@ dataSet[dataSetVersion].characterData = [
     opts: {
       series: ["blends"],
       when: ["in"],
-      status: ["main"]
+      status: ["main"],
+      rarity: ["ssr", "swimsuit2018", "newyear2019"]
     }
   },
   {
@@ -991,12 +1004,14 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Omi Nijou",
-    img: "https://i.imgur.com/xIyeAVA.jpg",
+    img: "https://i.imgur.com/n05p8nc.png",
     opts: {
       series: ["urara"],
       when: ["in"],
       status: ["main"],
-      nonanimu: true
+      rarity: ["newyear2020"],
+      nonanimu: true,
+      manga_exclusive: true
     }
   },
   //
@@ -1014,11 +1029,22 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Isana Tachibana",
-    img: "https://i.imgur.com/mEUz3wq.jpg",
+    img: "https://i.imgur.com/OviQSe8.png",
     opts: {
       series: ["merry"],
       when: ["in"],
-      status: ["main"]
+      status: ["main"],
+      rarity: ["dolls2018", "ssr"]
+    }
+  },
+  {
+    name: "Engi Threepiece",
+    img: "https://i.imgur.com/CHoitej.png",
+    opts: {
+      series: ["merry"],
+      when: ["in"],
+      status: ["anta"],
+      rarity: ["ssr"]
     }
   },
   //
@@ -1252,6 +1278,16 @@ dataSet[dataSetVersion].characterData = [
       status: ["main"]
     }
   },
+  {
+    name: "Fuura Suzu",
+    img: "https://i.imgur.com/acPqk4y.png",
+    opts: {
+      series: ["comiga"],
+      when: ["in"],
+      status: ["main"],
+      rarity: ["sr"]
+    }
+  },
   //
   // Harukana Recieve
   //
@@ -1292,12 +1328,12 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Claire Thomas",
-    img: "https://i.imgur.com/fkV7tOL.jpg",
+    img: "https://i.imgur.com/lL5auyn.png",
     opts: {
       series: ["haruka"],
       when: ["in"],
       status: ["main"],
-      rarity: ["sr"]
+      rarity: ["halloween2019"]
     }
   },
   {
@@ -1324,7 +1360,7 @@ dataSet[dataSetVersion].characterData = [
       series: ["rabbits"],
       when: ["in"],
       status: ["main"],
-      rarity: ["ssr"]
+      rarity: ["ssr", "christmas2019"]
     }
   },
   {
@@ -1350,7 +1386,7 @@ dataSet[dataSetVersion].characterData = [
       series: ["rabbits"],
       when: ["in"],
       status: ["main"],
-      rarity: ["ssr"]
+      rarity: ["ssr", "holloween2019"]
     }
   },
   {
@@ -1375,22 +1411,22 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Maya Jouga",
-    img: "https://i.imgur.com/BSqZQlc.png",
-    tooltip: "Source: Twitter / Official / April Fools",
+    img: "https://i.imgur.com/aDEca0e.png",
     opts: {
       series: ["rabbits"],
-      when: ["never"],
-      status: ["main"]
+      when: ["in"],
+      status: ["main"],
+      rarity: ["ssr"]
     }
   },
   {
     name: "Megumi Natsu",
-    img: "https://i.imgur.com/GGe1Qpg.png",
-    tooltip: "Source: Twitter / Official / April Fools",
+    img: "https://i.imgur.com/xWR4dhk.png",
     opts: {
       series: ["rabbits"],
-      when: ["never"],
-      status: ["main"]
+      when: ["in"],
+      status: ["main"],
+      rarity: ["ssr"]
     }
   },
   {
@@ -1530,12 +1566,12 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Kotetsu Tatejima",
-    img: "https://i.imgur.com/tkL5LA3.jpg",
+    img: "https://i.imgur.com/wQWLONX.png",
     opts: {
       series: ["anima"],
       when: ["in"],
       status: ["main"],
-      rarity: ["sr"]
+      rarity: ["christmas2019"]
     }
   },
   {
@@ -1650,12 +1686,12 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Miki Noda",
-    img: "https://i.imgur.com/B1UNGda.png",
+    img: "https://i.imgur.com/s4qktW5.png",
     opts: {
       series: ["ga"],
       when: ["in"],
       status: ["main"],
-      rarity: ["sr"]
+      rarity: ["ssr"]
     }
   },
   {
@@ -1700,6 +1736,22 @@ dataSet[dataSetVersion].characterData = [
       when: ["in"],
       status: ["main"],
       rarity: ["ssr"]
+    }
+  },
+  //
+  // Harumination
+  //
+  {
+    name: "Harumi Hosono",
+    img: "https://i.imgur.com/JByvFei.png",
+    tooltip: "If you don't recognize her, that's because she's manga-only.",
+    opts: {
+      series: ["harumi"],
+      when: ["in"],
+      status: ["main"],
+      rarity: ["ssr"],
+      nonanimu: true,
+      manga_exclusive: true
     }
   },
   //
@@ -1795,6 +1847,17 @@ dataSet[dataSetVersion].characterData = [
       rarity: ["ssr"]
     }
   },
+  {
+    name: "Kirara",
+    tooltip: "Titular Character",
+    img: "https://i.imgur.com/0HtE4Tw.png",
+    opts: {
+      series: ["kirara"],
+      when: ["in"],
+      status: ["main"],
+      rarity: ["ssr"]
+    }
+  },
   //
   // Machikado Mazoku
   //
@@ -1811,12 +1874,12 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Momo Chiyoda",
-    img: "https://i.imgur.com/YedzLiS.png",
+    img: "https://i.imgur.com/gV6TtaV.png",
     opts: {
       series: ["machi"],
       when: ["in"],
       status: ["main"],
-      rarity: ["sr"]
+      rarity: ["christmas2019"]
     }
   },
   {
