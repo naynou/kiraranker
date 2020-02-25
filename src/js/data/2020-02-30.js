@@ -483,7 +483,10 @@ dataSet[dataSetVersion].characterData = [
       },
       imgs: [
         {
-          tooltip: "Valentines (2020)",
+          tooltip: {
+            "en": "Valentines (2020)",
+            "jp": "バレンタイン【2020】"
+          },
           url: "https://i.imgur.com/gFs8k0x.png"
         }
       ]
