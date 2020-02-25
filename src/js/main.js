@@ -7,6 +7,7 @@ let characterDataToSort = [];   // Character data set after filtering.
 let options             = [];   // Initial option set used.
 
 let currentVersion      = '';   // Which version of characterData and options are used.
+let language            = 'en'; // Language
 
 /** @type {(boolean|boolean[])[]} */
 let optTaken  = [];             // Records which options are set.
@@ -271,6 +272,40 @@ function start() {
     .map(a => a[1]);
 
   /**
+   * Resolve all character data variables, including any alternate arts / tooltips, and language (if applicable)
+   */
+  characterDataToSort = characterDataToSort.map(
+    /**
+     * @param {CharaEntry} charData - entry
+     */
+    (charData) => {
+      const nr = (f) => { try { return f() } catch (e) { return null; } };
+
+      const defaultPair = [{ tooltip: charData.tooltip, url: charData.img }];
+      const altPairs = ( nr(() => charData.alts.imgs) ?? [] )
+        .map(p => {
+          p.tooltip = p.tooltip[language] ?? p.tooltip['en'] ?? '';
+          return p;
+        });
+      
+      console.log(`All pairs for ${charData.name}: ${JSON.stringify( altPairs.concat(defaultPair) )}`);
+
+      const chosenPair = altPairs.concat(defaultPair)
+        .map(a => [Math.random(), a])
+        .sort((a,b) => a[0] - b[0])
+        .map(a => a[1])[0];
+      
+      console.log(`${charData.name} chose: ${JSON.stringify(chosenPair)}`);
+
+      charData.tooltip = chosenPair.tooltip ?? '';
+      charData.img = chosenPair.url;
+      charData.name = nr(() => charData.alts.names[language]) ?? charData.name;
+
+      return charData
+    }
+  );
+
+  /**
    * tiedDataList will keep a record of indexes on which characters are equal (i.e. tied) 
    * to another one. recordDataList will have an interim list of sorted elements during
    * the mergesort process.
@@ -349,15 +384,13 @@ function display() {
     return `<p title="${charTooltip}">${charName}</p>`;
   };
 
-  progressBar(`Battle No. ${battleNo}`, percent);
-
-  document.querySelector('.left.sort.image').src = leftChar.img;
-  document.querySelector('.right.sort.image').src = rightChar.img;
-
-  
-
-  document.querySelector('.left.sort.text').innerHTML = charNameDisp(leftChar.name);
-  document.querySelector('.right.sort.text').innerHTML = charNameDisp(rightChar.name);
+  const displayCharData = (charData, alignment) => {
+    const queryImageSelector = document.querySelector(`.${alignment}.sort.image`);
+    const queryTextSelector = document.querySelector(`.${alignment}.sort.text`);
+    queryImageSelector.src = charData.img;
+    queryImageSelector.title = charData.tooltip ?? '';
+    queryTextSelector.innerHTML = charNameDisp(charData.name);
+  };              
 
   /** Autopick if choice has been given. */
   if (choices.length !== battleNo - 1) {
@@ -367,7 +400,14 @@ function display() {
       case 2: pick('tie'); break;
       default: break;
     }
-  } else { saveProgress('Autosave'); }
+  } else { // Continue displaying in full
+    progressBar(`Battle No. ${battleNo}`, percent);
+
+    displayCharData(leftChar, 'left');
+    displayCharData(rightChar, 'right');
+
+    saveProgress('Autosave');
+  }
 }
 
 /**

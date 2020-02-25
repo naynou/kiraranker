@@ -1,8 +1,47 @@
 /* exported dataSet */
 /* eslint-disable no-unused-vars */
 /**
- * @typedef {{name: string, key: string, tooltip?: string, checked?: boolean, sub?: {name: string, tooltip?: string, checked?: string}[]}[]} Options
- * @typedef {{name: string, img: string, opts: Object<string, boolean|number[]}[]} CharData
+ * @typedef {{
+ *      name: string,
+ *      key: string,
+ *      tooltip?: string, checked?: boolean, sub?: {name: string, tooltip?: string, checked?: string}[]}[]} Options
+ * @typedef {{
+ *      name: string,
+ *      img: string,
+ *      alts?: {
+ *          names?: {
+ *              "jp"?: string,
+ *              "cn"?: string
+ *          },
+ *          imgs?: {{
+ *              tooltip?: {
+ *                  "en": string,
+ *                  "jp"?: string
+ *              },
+ *              url: string
+ *          }[]}
+ *      },
+ *      opts: Object<string, boolean|number[]
+ * }[]
+ * } CharData
+ * @typedef {
+ *      name: string,
+ *      img: string,
+ *      alts?: {
+ *          names?: {
+ *              "jp"?: string,
+ *              "cn"?: string
+ *          },
+ *          imgs?: {{
+ *              tooltip?: {
+ *                  "en": string,
+ *                  "jp"?: string
+ *              },
+ *              url: string
+ *          }[]}
+ *      },
+ *      opts: Object<string, boolean|number[]
+ * } CharaEntry
  */
 /**
  * Data set. Characters will be removed from the sorting array based on selected options, working down the array.
