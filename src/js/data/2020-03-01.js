@@ -7,7 +7,7 @@
     dataSetVersion
 */
 /* eslint-disable no-global-assign */
-dataSetVersion = "2020-02-29" // Change this when creating a new data set version. YYYY-MM-DD format.
+dataSetVersion = "2020-03-01" // Change this when creating a new data set version. YYYY-MM-DD format.
 dataSet[dataSetVersion] = {}
 dataSet[dataSetVersion].options = [
   {
@@ -915,15 +915,51 @@ dataSet[dataSetVersion].characterData = [
   {
     name: "Maika Sakuranomiya",
     img: "https://i.imgur.com/e3d4iSl.jpg",
+    alts: {
+      names: {
+        "jp": "桜ノ宮 苺香"
+      },
+      imgs: [
+        {
+          tooltip: {
+            "en": "Swimsuit (2019)",
+            "jp": "水着【2019】"
+          },
+          url: "https://i.imgur.com/fJHsYeG.png"
+        }
+      ]
+    },
     opts: {
       series: ["blends"],
       when: ["in"],
-      status: ["main"]
+      status: ["main"],
+      rarity: ["ssr", "swimsuit2019"]
     }
   },
   {
     name: "Kaho Hinata",
-    img: "https://i.imgur.com/qhvHz8a.png",
+    img: "https://i.imgur.com/gfCuADC.png",
+    alts: {
+      names: {
+        "jp": "日向 夏帆"
+      },
+      imgs: [
+        {
+          tooltip: {
+            "en": "Swimsuit (2018)",
+            "jp": "水着【2018】"
+          },
+          url: "https://i.imgur.com/qhvHz8a.png"
+        },
+        {
+          tooltip: {
+            "en": "New Year (2019)",
+            "jp": "お正月【2019】"
+          },
+          url: "https://i.imgur.com/Ig29ZSI.png"
+        }
+      ]
+    },
     opts: {
       series: ["blends"],
       when: ["in"],
@@ -934,6 +970,11 @@ dataSet[dataSetVersion].characterData = [
   {
     name: "Mafuyu Hoshikawa",
     img: "https://i.imgur.com/sUcCxgA.jpg",
+    alts: {
+      names: {
+        "jp": "星川 麻冬"
+      }
+    },
     opts: {
       series: ["blends"],
       when: ["in"],
@@ -944,6 +985,11 @@ dataSet[dataSetVersion].characterData = [
   {
     name: "Miu Amano",
     img: "https://i.imgur.com/rL6dWi3.jpg",
+    alts: {
+      names: {
+        "jp": "天野 美雨"
+      }
+    },
     opts: {
       series: ["blends"],
       when: ["in"],
@@ -953,18 +999,38 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Hideri Kanzaki",
-    img: "https://i.imgur.com/E1NPdK7.jpg",
+    img: "https://i.imgur.com/TPLlTpC.png",
+    tooltip: "Hinamatsuri (2020) / ひな祭り【2020】",
+    alts: {
+      names: {
+        "jp": "神崎 ひでり"
+      },
+      imgs: [
+        {
+          tooltip: {
+            "en": "Hinamatsuri (2020)",
+            "jp": "ひな祭り【2020】"
+          },
+          url: "https://i.imgur.com/AEKv0fQ.png"
+        }
+      ]
+    },
     opts: {
       series: ["blends"],
       when: ["in"],
       status: ["main"],
-      rarity: ["sr"],
+      rarity: ["hinamatsuri2020"],
       trap: true
     }
   },
   {
     name: "Aika Sakuranomiya",
     img: "https://i.imgur.com/oy7IAi3.jpg",
+    alts: {
+      names: {
+        "jp": "桜ノ宮 愛香"
+      }
+    },
     opts: {
       series: ["blends"],
       when: ["in"],
@@ -1102,6 +1168,12 @@ dataSet[dataSetVersion].characterData = [
   {
     name: "Hana Ichinose",
     img: "https://i.imgur.com/WpzwFZ5.jpg",
+    alts: {
+      names: {
+        "jp": "一之瀬 花名"
+      },
+      imgs: []
+    },
     opts: {
       series: ["ss"],
       when: ["in"],
@@ -1112,6 +1184,12 @@ dataSet[dataSetVersion].characterData = [
   {
     name: "Kamuri Sengoku",
     img: "https://i.imgur.com/znhDmEC.jpg",
+    alts: {
+      names: {
+        "jp": "千石 冠"
+      },
+      imgs: []
+    },
     opts: {
       series: ["ss"],
       when: ["in"],
@@ -1122,6 +1200,13 @@ dataSet[dataSetVersion].characterData = [
   {
     name: "Eiko Tokura",
     img: "https://i.imgur.com/X1SuE6k.png",
+    tooltip: "Sports Festival (2019) / 運動会【2019】",
+    alts: {
+      names: {
+        "jp": "十倉 栄依子"
+      },
+      imgs: []
+    },
     opts: {
       series: ["ss"],
       when: ["in"],
@@ -1132,7 +1217,13 @@ dataSet[dataSetVersion].characterData = [
   {
     name: "Tamate Momochi",
     img: "https://i.imgur.com/nxNye7Z.jpg",
-    tooltip: "........image change 11/10",
+    tooltip: "........image change 11/10", // 百地 たまて
+    alts: {
+      names: {
+        "jp": "百地 たまて"
+      },
+      imgs: []
+    },
     opts: {
       series: ["ss"],
       when: ["in"],
@@ -1140,9 +1231,15 @@ dataSet[dataSetVersion].characterData = [
       rarity: ["ssr"]
     }
   },
-  {
+  { 
     name: "Kiyose Enami",
     img: "https://i.imgur.com/1UpHb7J.png",
+    alts: {
+      names: {
+        "jp": "榎並 清瀬"
+      },
+      imgs: []
+    },
     opts: {
       series: ["ss"],
       when: ["never"],
@@ -1151,16 +1248,30 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Shion Kyozuka",
-    img: "https://i.imgur.com/oIy2RuN.png",
+    img: "https://i.imgur.com/ARrnWF5.png",
+    tooltip: "Hinamatsuri (2020) / ひな祭り【2020】",
+    alts: {
+      names: {
+        "jp": "京塚 志温"
+      },
+      imgs: []
+    },
     opts: {
       series: ["ss"],
-      when: ["never"],
-      status: ["main"]
+      when: ["in"],
+      status: ["main"],
+      rarity: ["hinamatsuri2020"]
     }
   },
   {
     name: "Hiroe Hannen",
     img: "https://i.imgur.com/Up35pQR.png",
+    alts: {
+      names: {
+        "jp": "万年 大会"
+      },
+      imgs: []
+    },
     opts: {
       series: ["ss"],
       when: ["in"],
@@ -1977,12 +2088,18 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Claire",
-    img: "https://i.imgur.com/ddxzRLM.png",
+    img: "https://i.imgur.com/10YH7RV.png",
+    tooltip: "Hinamatsuri (2020) / ひな祭り【2020】",
+    alts: {
+      names: {
+        "jp": "クレア"
+      }
+    },
     opts: {
       series: ["kirara"],
       when: ["in"], // hell yeah
       status: ["main"],
-      rarity: ["sr"] // or swimsuit2019
+      rarity: ["hinamatsuri2020"] // or swimsuit2019
     }
   },
   {
@@ -2028,6 +2145,11 @@ dataSet[dataSetVersion].characterData = [
     name: "Yuuko Yoshida",
     img: "https://i.imgur.com/CWBWkvu.png",
     tooltip: "Shamiko",
+    alts: {
+      names: {
+        "jp": "吉田 優子"
+      }
+    },
     opts: {
       series: ["machi"],
       when: ["in"],
@@ -2038,6 +2160,12 @@ dataSet[dataSetVersion].characterData = [
   {
     name: "Momo Chiyoda",
     img: "https://i.imgur.com/gV6TtaV.png",
+    tooltip: "Christmas (2019) / クリスマス【2019】",
+    alts: {
+      names: {
+        "jp": "千代田 桃"
+      }
+    },
     opts: {
       series: ["machi"],
       when: ["in"],
@@ -2048,6 +2176,11 @@ dataSet[dataSetVersion].characterData = [
   {
     name: "Shion Ogura",
     img: "https://i.imgur.com/pSFXbsY.png",
+    alts: {
+      names: {
+        "jp": "小倉 しおん"
+      }
+    },
     opts: {
       series: ["machi"],
       when: ["never"],
@@ -2057,6 +2190,11 @@ dataSet[dataSetVersion].characterData = [
   {
     name: "Anri Sata",
     img: "https://i.imgur.com/fVFsq0s.png",
+    alts: {
+      names: {
+        "jp": "佐田 杏里"
+      }
+    },
     opts: {
       series: ["machi"],
       when: ["never"],
@@ -2065,16 +2203,27 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "Ryouko Yoshida",
-    img: "https://i.imgur.com/rOYwj4s.png",
+    img: "https://i.imgur.com/AQ7OHrx.png",
+    alts: {
+      names: {
+        "jp": "吉田 良子"
+      }
+    },
     opts: {
       series: ["machi"],
-      when: ["never"],
-      status: ["recur"]
+      when: ["in"],
+      status: ["main"],
+      rarity: ["hinamatsuri2020"]
     }
   },
   {
     name: "Lilith",
     img: "https://i.imgur.com/E344PVH.png",
+    alts: {
+      names: {
+        "jp": "リリス"
+      }
+    },
     opts: {
       series: ["machi"],
       when: ["in"],
@@ -2085,6 +2234,11 @@ dataSet[dataSetVersion].characterData = [
   {
     name: "Mikan Hinatsuki",
     img: "https://i.imgur.com/xwz5OHj.png",
+    alts: {
+      names: {
+        "jp": "陽夏木 ミカン"
+      }
+    },
     opts: {
       series: ["machi"],
       when: ["in"],
