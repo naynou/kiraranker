@@ -206,11 +206,14 @@ body {
 }
 
 .sorter > .text > p {
-  width: 100%;
   text-align: center;
   font-size: calc(5px + (100vw - 25px) * (24 - 5) / (1600 - 25) ); /*font-size: 0.925em;*/
-/*  transform: translateY(12.5%); */
-  transform: translateY(25%);
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 
 .sorter > .left {
