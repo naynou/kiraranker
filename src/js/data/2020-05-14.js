@@ -3003,7 +3003,7 @@ dataSet[dataSetVersion].characterData = [
     },
     opts: {
       series: ["foodgasm"],
-      when: ["never"],
+      when: ["in"],
       status: ["main"],
       rarity: ["sr"]
     }
